@@ -1,0 +1,43 @@
+# derpy's script server: account system - derpy54320 & SWEGTA
+
+[INTEGRATIONS]
+#use_profanity_filter 0		# uncomment to use "profanity" scripts to filter usernames during sign-up (value is a profanity level)
+
+[INTERFACE]
+#ui_title_text SERVER TITLE			# uncomment for a single title instead of "news" / "login"
+ui_news_image image/banner.png		# can be commented out if you don't want a news banner
+ui_news_title SERVER NEWS
+ui_news_text This server has not been configured yet.
+
+[SIGNUP]
+max_signups_per_ip 1			# maximum amount of accounts that can be made by one ip (reset when scripts stop)
+max_signups_cooldown 1440		# how many minutes it takes for an ip to be allowed to make another account
+use_character_filter [^%w_]		# lua pattern that will disallow usernames if a match is found
+max_username_length 16
+min_password_length 1
+
+[LOGIN]
+max_logins_per_ip 10		# maximum amount of login attempts per ip (reset when scripts stop)
+max_logins_cooldown 5		# how many minutes it takes for an ip to be allowed to try again
+
+[CONSOLE]
+log_user_signup true		# show account creation in the server
+log_user_login true			# show account logins in the server
+
+[ADMINISTRATOR]
+#promote_1st_account admin		# uncomment to give the first account some role (you can make as many of these as you want)
+
+[CONFIG]
+require_version 7
+require_name account
+main_script sv_account.lua
+client_script cl_account.lua
+client_file layout.lua
+client_file image/arrow.png
+client_file image/banner.png
+client_file image/confirm.png
+client_file image/login.png
+client_file image/news.png
+client_file image/password.png
+client_file image/signup.png
+client_file image/username.png

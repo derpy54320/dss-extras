@@ -1,0 +1,21 @@
+# derpy's script server: admin utilities - server configuration - derpy54320
+
+# this file is seperate from config.txt so it doesn't get sent to clients
+# players can be marked by ip or account role (if use_account_system)
+
+# admins can do anything while moderators can only do some things
+# you may list as many ips / roles as desired
+
+[ADMINS]
+admin_ip 127.0.0.1
+admin_role admin
+
+[MODERATORS]
+#mod_ip 127.0.0.1
+mod_role mod
+
+[PERMISSIONS]
+mod_cmd ban
+mod_cmd kick
+mod_cmd players
+#mod_cmd server
