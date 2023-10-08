@@ -1,8 +1,6 @@
 -- SYNC: client peds
 s = GetScriptSharedTable()
 
-RegisterLocalizedText("N_TEMP_ONLINE",100)
-
 -- scripts:
 LoadScript("actions.lur")
 
@@ -856,7 +854,7 @@ end
 -- reset peds:
 function F_ResetPeds() -- needed occasionally because of a bug that hasn't been figured out yet
 	for _,ped in pairs(gPeds) do
-		if ped.ped ~= gPlayer then
+		if not ped.owned and ped.ped ~= gPlayer then
 			if PedIsValid(ped.ped) then
 				PedDelete(ped.ped)
 			end
