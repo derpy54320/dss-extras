@@ -1,6 +1,5 @@
 # derpy's script server - extras
-These are the scripts that come with derpy's script server in the "extras" folder, as well as some new ones that didn't make it into a server release.
-They can all run independently or be configured to integrate with each other.
+These are general-purpose scripts that most servers could benefit from. While using all of them is usually not the right choice for any one server, you are encouraged to pick some you might need.
 
 # Server Manual
 See the [server manual](http://bullyscripting.net/server.html) for documentation on these scripts.
