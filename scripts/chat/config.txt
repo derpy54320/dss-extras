@@ -11,9 +11,9 @@ max_message_count 100		# max amount of messages to keep in chat history
 max_message_length 300		# max length for a single chat message
 
 [INTEGRATIONS]
-use_account_system false	# use "account" scripts for player names and ui timing
-use_admin_system false		# use "admin" scripts to show player ID numbers to moderators
-#use_profanity_filter 0		# uncomment to use "profanity" scripts to filter chat messages (value is a profanity level)
+use_account_system false		# use "account" scripts for player names and ui timing
+use_admin_system false			# use "admin" scripts to show player ID numbers to moderators
+#use_profanity_filter 0			# uncomment to use "profanity" scripts to filter chat messages (value is a profanity level)
 
 [MISCELLANEOUS]
 should_fade_chat true		# fade the chat during loading screens and respect the player's brightness settings
