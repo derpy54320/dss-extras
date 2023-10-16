@@ -1,8 +1,18 @@
 -- derpy's script server: admin utilities - derpy54320
+api = GetScriptSharedTable()
 
 -- globals
 gCommands = {}
 gPlayers = {}
+gLevel = 0 -- zero = nothing, otherwise it corresponds to the server level
+
+-- api
+function api.is_admin()
+	return gLevel == 1
+end
+function api.is_mod()
+	return gLevel ~= 0 and gLevel <= 2
+end
 
 -- main
 function main()
@@ -27,6 +37,9 @@ RegisterNetworkEventHandler("admin:setPermissions",function(list)
 end)
 RegisterNetworkEventHandler("admin:setPlayers",function(players)
 	gPlayers = players
+end)
+RegisterNetworkEventHandler("admin:setLevel",function(level)
+	gLevel = level
 end)
 
 -- utility

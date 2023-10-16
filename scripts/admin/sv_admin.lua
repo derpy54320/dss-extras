@@ -11,7 +11,7 @@ gLevels = {"admin","mod"} -- lower index is a better rank
 function api.is_player_admin(player)
 	local level = gPlayers[player]
 	if level then
-		return level == 1
+		return level == 1 -- if you change level meanings, make sure to change the client API functions too
 	end
 	return false
 end
@@ -59,6 +59,7 @@ function F_RefreshPermissions(player)
 		F_SetMod(player) -- give a specific list of commands
 		F_UpdatePlayers(player)
 	end
+	SendNetworkEvent(player,"admin:setLevel",level or 0)
 	gPlayers[player] = level
 	RunLocalEvent("admin:playerUpdated",player)
 end
