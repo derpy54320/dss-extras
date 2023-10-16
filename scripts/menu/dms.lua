@@ -80,6 +80,9 @@ function mt_menu.__index:draw(keep)
 		if self.fix_camera and IsButtonBeingReleased(2,0) then -- fix camera change
 			CreateAdvancedThread("GAME2",T_FixCam)
 		end
+		if self.i > self.n and self.n ~= 0 then -- adjust index
+			self.i = self.n
+		end
 		if self.n <= shown then -- adjust offset
 			self.off = 0
 		elseif self.i <= self.off then
