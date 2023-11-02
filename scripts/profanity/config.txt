@@ -11,8 +11,7 @@ default_level 2			# the lowest profanity level to filter out by default (when 0 
 harsh_filter false		# replace an entire string with * if it contains something bad
 
 [CLEAN_WORDS]
-clean_word nigh			# if a profane word ends up being a clean word then it doesn't count
-clean_word kyscr		# for skyscraper
+#clean_word nigh		# if a profane word ends up being a clean word then it doesn't count
 
 [PROFANITY_3]	# slurs or trauma inducing
 profanity3 beaner
@@ -22,12 +21,7 @@ profanity3 fag
 profanity3 kike
 profanity3 killurself
 profanity3 killyourself
-profanity3 kilurself
-profanity3 kiluself
-profanity3 kiluslf
-profanity3 kys
-profanity3 nig
-profanity3 ngg
+profanity3 nigg
 profanity3 rape
 profanity3 rapist
 profanity3 retard
