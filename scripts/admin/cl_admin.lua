@@ -108,6 +108,25 @@ RegisterNetworkEventHandler("admin:listPlayers",function(output)
 	PrintOutput(output)
 end)
 
+-- /promote
+F_Register("promote","Usage: promote <id> <rank>\nTemporarily promote a player to a certain rank.",false,function(player,rank)
+	local id = F_GetPlayerId(player,true)
+	if id then
+		if rank then
+			SendNetworkEvent("admin:promotePlayer",id,string.lower(rank))
+		else
+			PrintError("Rank expected.")
+		end
+	end
+end)
+RegisterNetworkEventHandler("admin:promotedPlayer",function(success)
+	if success then
+		PrintOutput("Promoted player.")
+	else
+		PrintError("Failed to promote player.")
+	end
+end)
+
 -- /server
 F_Register("server","Usage: server\nRun a server command.",true,function(cmdline)
 	if cmdline then

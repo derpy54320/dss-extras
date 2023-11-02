@@ -197,11 +197,13 @@ function T_Option(opt,c)
 end
 
 -- thread cleanup
-SetScriptCleanup(function()
-	if gOptions then
-		for _,opt in ipairs(gOptions) do
-			opt[3] = 2 -- tell these threads to die (since they belong to those other scripts)
+RegisterLocalEventHandler("ScriptShutdown",function(script)
+	if script == GetCurrentScript() then
+		if gOptions then
+			for _,opt in ipairs(gOptions) do
+				opt[3] = 2 -- tell these threads to die (since they belong to those other scripts)
+			end
 		end
+		gMainMenu = nil -- so the main menu doesn't draw when threads die
 	end
-	gMainMenu = nil -- so the main menu doesn't draw when threads die
 end)

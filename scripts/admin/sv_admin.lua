@@ -5,6 +5,7 @@ api = GetScriptSharedTable()
 gAdmin = LoadConfigFile("admin.txt")
 gBanned = {} -- temporarily banned IPs
 gPlayers = {} -- these players have some admin level
+gPromoted = {} -- manually promoted players
 gLevels = {"admin","mod"} -- lower index is a better rank
 
 -- api
@@ -42,6 +43,7 @@ RegisterLocalEventHandler("PlayerConnected",function(player)
 end)
 RegisterLocalEventHandler("PlayerDropped",function(player)
 	gPlayers[player] = nil
+	gPromoted[player] = nil
 	for p in pairs(gPlayers) do
 		F_UpdatePlayers(p)
 	end
@@ -49,7 +51,7 @@ end)
 
 -- refresh permissions
 function F_RefreshPermissions(player)
-	local level = F_GetLevel(player)
+	local level = gPromoted[player] or F_GetLevel(player)
 	if not level then
 		SendNetworkEvent(player,"admin:setPermissions",{}) -- empty list since this player is not special
 	elseif level == 1 then
@@ -129,10 +131,12 @@ end
 RegisterNetworkEventHandler("admin:requestPermissions",F_RefreshPermissions)
 
 -- cleanup
-SetScriptCleanup(function()
-	for p in pairs(gPlayers) do
-		gPlayers[p] = nil
-		RunLocalEvent("admin:playerUpdated",p)
+RegisterLocalEventHandler("ScriptShutdown",function(script)
+	if script == GetCurrentScript() then
+		for p in pairs(gPlayers) do
+			gPlayers[p] = nil
+			RunLocalEvent("admin:playerUpdated",p)
+		end
 	end
 end)
 
@@ -206,6 +210,29 @@ RegisterNetworkEventHandler("admin:requestPlayers",function(player)
 		elseif n > 1 then
 			SendNetworkEvent(player,"admin:listPlayers","There are "..n.." players in the server.\n\t"..table.concat(list,"\n\t"))
 		end
+	end
+end)
+
+-- /promote
+RegisterNetworkEventHandler("admin:promotePlayer",function(player,target,rank)
+	if F_CheckPlayer(player,"promote") and type(target) == "number" and type(rank) == "string" then
+		if IsPlayerValid(target) then
+			for i,v in ipairs(gLevels) do
+				if v == rank then
+					gPromoted[target] = i
+					F_RefreshPermissions(target)
+					SendNetworkEvent(player,"admin:promotedPlayer",true)
+					return
+				end
+			end
+			if v == "none" then
+				gPromoted[target] = nil
+				F_RefreshPermissions(target)
+				SendNetworkEvent(player,"admin:promotedPlayer",true)
+				return
+			end
+		end
+		SendNetworkEvent(player,"admin:promotedPlayer")
 	end
 end)
 

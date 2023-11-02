@@ -18,4 +18,5 @@ mod_role mod
 mod_cmd ban
 mod_cmd kick
 mod_cmd players
+#mod_cmd promote
 #mod_cmd server
