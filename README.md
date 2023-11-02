@@ -7,4 +7,4 @@ If you're interested in working on any of these scripts feel free to start a dis
 See the [server manual](http://bullyscripting.net/server.html) for documentation on most of these scripts.
 It covers what they do, how to use them, and how to script for them.
 The "basync" scripts (that provide *basic sync*) are not documented there because they have their own documentation.
-Open the [basync.html](./scripts/basync/basync.html) after downloading basync to learn more.
+Open [basync.html](./scripts/basync/basync.html) after downloading basync to learn more.
