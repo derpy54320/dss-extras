@@ -1,5 +1,5 @@
 -- derpy's script server: account system - derpy54320 & SWEGTA
-api = GetScriptSharedTable()
+api = GetScriptNetworkTable()
 LoadScript("layout.lua")
 
 -- globals

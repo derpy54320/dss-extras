@@ -1,5 +1,5 @@
 -- derpy's script server: profanity filter - derpy54320
-api = GetScriptSharedTable()
+api = GetScriptNetworkTable()
 
 -- globals
 gClean = {}

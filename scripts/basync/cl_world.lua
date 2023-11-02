@@ -107,7 +107,7 @@ end
 
 -- debug menu
 function basync.run_world_menu()
-	local menu = dsl.menu.create("Basync World")
+	local menu = net.menu.create("Basync World")
 	while menu:active() do
 		if menu:option("Set Chapter","["..(gWorld.chapter+1).."]") then
 			local value = get_menu_value(menu,gWorld.chapter+1,1,1,7,false)

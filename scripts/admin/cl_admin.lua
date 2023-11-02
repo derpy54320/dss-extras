@@ -1,5 +1,5 @@
 -- derpy's script server: admin utilities - derpy54320
-api = GetScriptSharedTable()
+api = GetScriptNetworkTable()
 
 -- globals
 gCommands = {}

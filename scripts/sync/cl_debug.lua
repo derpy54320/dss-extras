@@ -1,5 +1,5 @@
 -- SYNC: debug
-s = GetScriptSharedTable()
+s = GetScriptNetworkTable()
 
 -- globals:
 gShowing = false

@@ -1,5 +1,5 @@
 -- SYNC: server peds
-s = GetScriptSharedTable()
+s = GetScriptNetworkTable()
 
 -- globals:
 gPeds = {}

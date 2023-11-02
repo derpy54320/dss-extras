@@ -1,5 +1,5 @@
 -- SYNC: client peds
-s = GetScriptSharedTable()
+s = GetScriptNetworkTable()
 
 -- scripts:
 LoadScript("actions.lur")

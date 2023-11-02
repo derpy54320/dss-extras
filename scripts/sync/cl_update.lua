@@ -1,5 +1,5 @@
 -- SYNC: client players
-s = GetScriptSharedTable()
+s = GetScriptNetworkTable()
 
 -- globals:
 gUpdateRate = -1

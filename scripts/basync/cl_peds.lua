@@ -689,7 +689,7 @@ end
 
 -- debug menu
 function basync.run_ped_menu()
-	local menu = dsl.menu.create("Basync Peds","Re-open this menu to show new peds.")
+	local menu = net.menu.create("Basync Peds","Re-open this menu to show new peds.")
 	local peds = {}
 	for _,ped in pairs(gPeds) do
 		table.insert(peds,ped)
@@ -720,7 +720,7 @@ function basync.run_ped_menu()
 	end
 end
 function basync.spawn_ped_menu()
-	local menu = dsl.menu.create("Summon Basync Ped")
+	local menu = net.menu.create("Summon Basync Ped")
 	while menu:active() do
 		for i = 0,258 do
 			local model = PED_MODELS[i]
@@ -735,7 +735,7 @@ function basync.spawn_ped_menu()
 	end
 end
 function specific_ped_menu(id,ped,name)
-	local menu = dsl.menu.create("["..id.."] "..name)
+	local menu = net.menu.create("["..id.."] "..name)
 	while menu:active() and gPeds[id] == ped do
 		if menu:option("Show Full Server Data") then
 			SendNetworkEvent("basync:debugPed",id)

@@ -1,5 +1,5 @@
 -- derpy's script server: chat - derpy54320 & SWEGTA
-api = GetScriptSharedTable()
+api = GetScriptNetworkTable()
 
 -- globals
 gTyping = false
@@ -68,7 +68,7 @@ function main()
 	end
 end
 function F_CanUseChat()
-	if GetConfigBoolean(GetScriptConfig(),"use_account_system") and dsl.account and dsl.account.is_ui_active() then
+	if GetConfigBoolean(GetScriptConfig(),"use_account_system") and net.account and net.account.is_ui_active() then
 		return false -- account ui is active
 	end
 	return true -- we can use the chat
@@ -144,11 +144,11 @@ end
 function F_SendMessage(message)
 	local profanity = GetConfigNumber(GetScriptConfig(),"use_profanity_filter")
 	if profanity then
-		if not dsl.profanity then
+		if not net.profanity then
 			PrintWarning("Failed to send message because \"profanity\" scripts are not running.")
 			return
 		end
-		message = dsl.profanity.get_clean_str(message,profanity)
+		message = net.profanity.get_clean_str(message,profanity)
 	end
 	SendNetworkEvent("chat:sendMessage",message)
 end

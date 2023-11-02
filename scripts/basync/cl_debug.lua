@@ -19,14 +19,14 @@ end
 
 -- events
 RegisterLocalEventHandler("menu:openMain",function(add)
-	if dsl.admin and dsl.admin.is_admin() then
+	if net.admin and net.admin.is_admin() then
 		add("Basync Debug","Admin menu for basync.",M_Debug)
 	end
 end)
 
 -- core functions
 function M_Debug()
-	local menu = dsl.menu.create("Basync Debug")
+	local menu = net.menu.create("Basync Debug")
 	while menu:active() do
 		if menu:option("Ped Viewer") then
 			basync.run_ped_menu()
@@ -50,7 +50,7 @@ function M_Debug()
 	end
 end
 function M_DebugPanel()
-	local menu = dsl.menu.create("Debug Panel Options")
+	local menu = net.menu.create("Debug Panel Options")
 	while menu:active() do
 		if menu:option("Show Ped Pool Usage",gDebugText.active.peds and "[ON]" or "[OFF]") then
 			F_DebugPanel("peds")

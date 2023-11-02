@@ -1,5 +1,5 @@
 -- derpy's script server: chat - derpy54320 & SWEGTA
-api = GetScriptSharedTable()
+api = GetScriptNetworkTable()
 
 -- globals
 gPlayers = {} -- players signed into chat system
@@ -135,10 +135,10 @@ end)
 function F_CheckMessage(player,message)
 	local profanity = GetConfigNumber(GetScriptConfig(),"use_profanity_filter")
 	if profanity then
-		if not dsl.profanity then
+		if not net.profanity then
 			PrintWarning("Failed to send player message because \"profanity\" scripts are not running.")
 			return false
-		elseif dsl.profanity.is_dirty_str(message,profanity) then
+		elseif net.profanity.is_dirty_str(message,profanity) then
 			KickPlayer(player,"bad chat message") -- their script shouldn't have allowed this
 			return false
 		end
@@ -175,13 +175,13 @@ function F_InitPlayerData(modcheck,player,name)
 	return data
 end
 function F_UpdatePlayerRank(player)
-	if GetConfigBoolean(GetScriptConfig(),"use_admin_system") and dsl.admin then
-		dsl.admin.update_player(player) -- needed during PlayerConnected and PlayerSignedIn events since they're when admin updates too (and admin might be late)
+	if GetConfigBoolean(GetScriptConfig(),"use_admin_system") and net.admin then
+		net.admin.update_player(player) -- needed during PlayerConnected and PlayerSignedIn events since they're when admin updates too (and admin might be late)
 	end
 end
 function F_IsPlayerModerator(player)
-	if GetConfigBoolean(GetScriptConfig(),"use_admin_system") and dsl.admin then
-		return dsl.admin.is_player_mod(player)
+	if GetConfigBoolean(GetScriptConfig(),"use_admin_system") and net.admin then
+		return net.admin.is_player_mod(player)
 	end
 	return false
 end
@@ -197,8 +197,8 @@ function main()
 		end
 		RegisterLocalEventHandler("PlayerConnected",CB_PlayerConnected)
 		RegisterLocalEventHandler("PlayerDropped",CB_PlayerDropped)
-	elseif dsl.account then
-		for player,username in dsl.account.all_players() do
+	elseif net.account then
+		for player,username in net.account.all_players() do
 			gPlayers[player] = F_InitPlayerData(true,player,username)
 		end
 		RegisterLocalEventHandler("account:playerSignedIn",CB_PlayerSignedIn)

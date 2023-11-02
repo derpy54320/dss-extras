@@ -1,5 +1,5 @@
 -- SYNC: server players
-s = GetScriptSharedTable()
+s = GetScriptNetworkTable()
 
 -- shared:
 s.players = {}

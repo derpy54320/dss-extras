@@ -1,5 +1,5 @@
 -- derpy's script server: server menu - derpy54320
-api = GetScriptSharedTable()
+api = GetScriptNetworkTable()
 LoadScript("dms.lua")
 
 -- globals

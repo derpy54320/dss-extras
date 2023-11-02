@@ -1,5 +1,5 @@
 -- derpy's script server: account system - derpy54320 & SWEGTA
-api = GetScriptSharedTable()
+api = GetScriptNetworkTable()
 
 -- globals
 -- gAccounts is setup by F_Load
@@ -360,10 +360,10 @@ function F_CanUsernameSignup(user)
 	elseif string.len(user) < 1 or (max_length and string.len(user) > max_length) or (char_filter and string.find(user,char_filter)) then
 		return false,"Username is not allowed."
 	elseif prof_filter then
-		if not dsl.profanity then
+		if not net.profanity then
 			PrintWarning("Signup failed because \"profanity\" scripts are not running.")
 			return false,"Server failed, try again later."
-		elseif dsl.profanity.is_dirty_str(user,prof_filter) then
+		elseif net.profanity.is_dirty_str(user,prof_filter) then
 			return false,"Username is not allowed."
 		end
 	end

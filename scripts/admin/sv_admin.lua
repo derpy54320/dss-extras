@@ -1,5 +1,5 @@
 -- derpy's script server: admin utilities - derpy54320
-api = GetScriptSharedTable()
+api = GetScriptNetworkTable()
 
 -- globals
 gAdmin = LoadConfigFile("admin.txt")
@@ -67,7 +67,7 @@ function F_RefreshPermissions(player)
 end
 function F_GetLevel(player)
 	local player_ip = GetPlayerIp(player)
-	local use_accounts = GetConfigBoolean(GetScriptConfig(),"use_account_system") and dsl.account
+	local use_accounts = GetConfigBoolean(GetScriptConfig(),"use_account_system") and net.account
 	for level,name in ipairs(gLevels) do
 		for ip in AllConfigStrings(gAdmin,name.."_ip") do
 			if ip == player_ip then
@@ -76,7 +76,7 @@ function F_GetLevel(player)
 		end
 		if use_accounts then
 			for role in AllConfigStrings(gAdmin,name.."_role") do
-				if dsl.account.is_player_role(player,role) then
+				if net.account.is_player_role(player,role) then
 					return level
 				end
 			end
@@ -184,13 +184,13 @@ end)
 RegisterNetworkEventHandler("admin:requestPlayers",function(player)
 	if F_CheckPlayer(player,"players") then
 		local n,list = 0,{}
-		local use_accounts = GetConfigBoolean(GetScriptConfig(),"use_account_system") and dsl.account
+		local use_accounts = GetConfigBoolean(GetScriptConfig(),"use_account_system") and net.account
 		for id in AllPlayers() do
 			local level = gPlayers[id]
 			n = n + 1
 			list[n] = {id,"\""..GetPlayerName(id).."\""}
 			if use_accounts then
-				local username = dsl.account.get_player_username(id)
+				local username = net.account.get_player_username(id)
 				if username then
 					list[n][2] = list[n][2].." / user: \""..username.."\""
 				end

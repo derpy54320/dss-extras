@@ -104,22 +104,22 @@ end
 
 -- debug events
 RegisterNetworkEventHandler("basync:debugChapter",function(player,chapter)
-	if dsl.admin and dsl.admin.is_player_admin(player) then
+	if net.admin and net.admin.is_player_admin(player) then
 		pcall(basync.set_chapter,chapter)
 	end
 end)
 RegisterNetworkEventHandler("basync:debugWeather",function(player,weather)
-	if dsl.admin and dsl.admin.is_player_admin(player) then
+	if net.admin and net.admin.is_player_admin(player) then
 		pcall(basync.set_weather,weather)
 	end
 end)
 RegisterNetworkEventHandler("basync:debugTime",function(player,hour,minute)
-	if dsl.admin and dsl.admin.is_player_admin(player) then
+	if net.admin and net.admin.is_player_admin(player) then
 		pcall(basync.set_time,hour,minute)
 	end
 end)
 RegisterNetworkEventHandler("basync:debugTimeRate",function(player,rate)
-	if dsl.admin and dsl.admin.is_player_admin(player) then
+	if net.admin and net.admin.is_player_admin(player) then
 		pcall(basync.set_time_rate,rate)
 	end
 end)

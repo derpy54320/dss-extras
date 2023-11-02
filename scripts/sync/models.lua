@@ -1,5 +1,5 @@
 -- SYNC: model tables
-s = GetScriptSharedTable()
+s = GetScriptNetworkTable()
 
 s.pedModels = {
 	-- game index is -1 of the index in this table

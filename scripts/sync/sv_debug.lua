@@ -1,5 +1,5 @@
 -- SYNC: server debug
-s = GetScriptSharedTable()
+s = GetScriptNetworkTable()
 
 -- invalid report:
 RegisterNetworkEventHandler("sync:reportInvalid",function(player,ped)

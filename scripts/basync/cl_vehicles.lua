@@ -403,7 +403,7 @@ end
 
 -- debug menu
 function basync.run_vehicle_menu()
-	local menu = dsl.menu.create("Basync Vehicles","Re-open this menu to show new vehicles.")
+	local menu = net.menu.create("Basync Vehicles","Re-open this menu to show new vehicles.")
 	local vehs = {}
 	for _,veh in pairs(gVehicles) do
 		table.insert(vehs,veh)
@@ -431,7 +431,7 @@ function basync.run_vehicle_menu()
 	end
 end
 function basync.spawn_vehicle_menu()
-	local menu = dsl.menu.create("Spawn Basync Vehicle")
+	local menu = net.menu.create("Spawn Basync Vehicle")
 	while menu:active() do
 		for i = 272,298 do
 			local model = VEHICLE_MODELS[i]
@@ -446,7 +446,7 @@ function basync.spawn_vehicle_menu()
 	end
 end
 function specific_vehicle_menu(id,veh,name)
-	local menu = dsl.menu.create("["..id.."] "..name)
+	local menu = net.menu.create("["..id.."] "..name)
 	while menu:active() and gVehicles[id] == veh do
 		if menu:option("Show Full Server Data") then
 			SendNetworkEvent("basync:debugVehicle",id)

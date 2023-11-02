@@ -1,5 +1,5 @@
 -- SYNC: client world
-s = GetScriptSharedTable()
+s = GetScriptNetworkTable()
 
 -- globals:
 gWorld = {}

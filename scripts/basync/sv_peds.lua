@@ -568,7 +568,7 @@ end
 
 -- debug events
 RegisterNetworkEventHandler("basync:debugPed",function(player,id)
-	if gPlayers[player] and dsl.admin.is_player_admin(player) then
+	if gPlayers[player] and net.admin.is_player_admin(player) then
 		local ped = basync.get_net_id(player,id)
 		if ped and ped == gPeds[id] then
 			local backup = ped.server
@@ -581,7 +581,7 @@ RegisterNetworkEventHandler("basync:debugPed",function(player,id)
 	end
 end)
 RegisterNetworkEventHandler("basync:spawnPed",function(player,model,area,x,y,z,h)
-	if gPlayers[player] and dsl.admin.is_player_admin(player) then
+	if gPlayers[player] and net.admin.is_player_admin(player) then
 		local ped = basync.create_ped(model)
 		ped:set_position(x,y,z,h)
 		ped:set_area(area)

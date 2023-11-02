@@ -1,2 +1,2 @@
 -- SYNC: server vehicles
-s = GetScriptSharedTable()
+s = GetScriptNetworkTable()

@@ -1,5 +1,5 @@
 -- SYNC: server world
-s = GetScriptSharedTable()
+s = GetScriptNetworkTable()
 
 -- globals:
 gSend = false

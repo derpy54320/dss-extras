@@ -516,7 +516,7 @@ end
 
 -- debug events
 RegisterNetworkEventHandler("basync:debugVehicle",function(player,id)
-	if gPlayers[player] and dsl.admin.is_player_admin(player) then
+	if gPlayers[player] and net.admin.is_player_admin(player) then
 		local veh = basync.get_net_id(player,id)
 		if veh and veh == gVehicles[id] then
 			local backup = veh.server
@@ -529,7 +529,7 @@ RegisterNetworkEventHandler("basync:debugVehicle",function(player,id)
 	end
 end)
 RegisterNetworkEventHandler("basync:spawnVehicle",function(player,model,area,x,y,z,h)
-	if gPlayers[player] and dsl.admin.is_player_admin(player) then
+	if gPlayers[player] and net.admin.is_player_admin(player) then
 		local veh = basync.create_vehicle(model)
 		veh:set_position(x,y,z,h)
 		veh:set_area(area)
