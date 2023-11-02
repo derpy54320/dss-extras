@@ -28,7 +28,7 @@ log_user_login true			# show account logins in the server
 #promote_1st_account admin		# uncomment to give the first account some role (you can make as many of these as you want)
 
 [CONFIG]
-require_version 7
+require_version 8
 require_name account
 main_script sv_account.lua
 client_script cl_account.lua

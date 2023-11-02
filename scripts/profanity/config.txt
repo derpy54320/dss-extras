@@ -48,7 +48,7 @@ profanity1 tits
 profanity1 titt
 
 [CONFIG]
-require_version 7
+require_version 8
 require_name profanity
 main_script profanity.lua
 client_script profanity.lua

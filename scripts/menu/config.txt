@@ -13,7 +13,7 @@ menu_key F2
 #menu_order Option Name 2
 
 [CONFIG]
-require_version 7
+require_version 8
 require_name menu
 client_script cl_menu.lua
 client_file dms.lua

@@ -1,7 +1,7 @@
-# BASYNC: basic sync by derpy54320
+# derpy's script server: basic sync - derpy54320
 
 [REQUIREMENTS]
-require_version 7
+require_version 8
 require_name basync
 
 [FEATURES]

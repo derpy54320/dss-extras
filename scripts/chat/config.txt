@@ -22,7 +22,7 @@ display_timeout_ms 7000		# how long it takes for the chat to disappear
 help_command_output "Use /help in the console for a full list of commands. Any console command can be used here, but some may not output here."
 
 [CONFIG]
-require_version 7
+require_version 8
 require_name chat
 main_script sv_chat.lua
 client_script cl_chat.lua
