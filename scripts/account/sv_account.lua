@@ -525,13 +525,14 @@ function F_GetUsernameFromString(str) -- usernames *are* case-sensitive in Lua, 
 end
 
 -- script cleanup
-function F_Cleanup()
-	RunLocalEvent("account:scriptStopping")
-	for id,pd in pairs(gPlayers) do
-		F_LogoutPlayer(id,pd)
+RegisterLocalEventHandler("ScriptShutdown",function(script)
+	if script == GetCurrentScript() then
+		RunLocalEvent("account:scriptStopping")
+		for id,pd in pairs(gPlayers) do
+			F_LogoutPlayer(id,pd)
+		end
 	end
-end
+end)
 
 -- initialize
-SetScriptCleanup(F_Cleanup)
 F_Load()
